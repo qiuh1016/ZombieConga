@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9166BB01DD056D2000315A9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166BAF1DD056D2000315A9 /* Functions.swift */; };
+		B9166BB21DD062B8000315A9 /* Bean.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9166BB11DD062B8000315A9 /* Bean.swift */; };
 		B9CB23641DB09ED600A46C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CB23631DB09ED600A46C76 /* AppDelegate.swift */; };
 		B9CB236A1DB09ED600A46C76 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CB23691DB09ED600A46C76 /* GameScene.swift */; };
 		B9CB236C1DB09ED600A46C76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CB236B1DB09ED600A46C76 /* GameViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B9166BAF1DD056D2000315A9 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		B9166BB11DD062B8000315A9 /* Bean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bean.swift; sourceTree = "<group>"; };
 		B9CB23601DB09ED600A46C76 /* ZombieConga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZombieConga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9CB23631DB09ED600A46C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9CB23691DB09ED600A46C76 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -59,10 +63,12 @@
 			isa = PBXGroup;
 			children = (
 				B9CB23631DB09ED600A46C76 /* AppDelegate.swift */,
+				B9166BAF1DD056D2000315A9 /* Functions.swift */,
 				B9CB23691DB09ED600A46C76 /* GameScene.swift */,
 				B9CB236B1DB09ED600A46C76 /* GameViewController.swift */,
 				B9CB236D1DB09ED600A46C76 /* Main.storyboard */,
 				B9CB237B1DB0BA7400A46C76 /* MyUtils.swift */,
+				B9166BB11DD062B8000315A9 /* Bean.swift */,
 				B9CB23701DB09ED600A46C76 /* Assets.xcassets */,
 				B9CB23721DB09ED600A46C76 /* LaunchScreen.storyboard */,
 				B9CB23751DB09ED600A46C76 /* Info.plist */,
@@ -146,7 +152,9 @@
 				B9CB236A1DB09ED600A46C76 /* GameScene.swift in Sources */,
 				B9CB236C1DB09ED600A46C76 /* GameViewController.swift in Sources */,
 				B9CB23641DB09ED600A46C76 /* AppDelegate.swift in Sources */,
+				B9166BB01DD056D2000315A9 /* Functions.swift in Sources */,
 				B9CB237C1DB0BA7400A46C76 /* MyUtils.swift in Sources */,
+				B9166BB21DD062B8000315A9 /* Bean.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +318,7 @@
 				B9CB237A1DB09ED600A46C76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

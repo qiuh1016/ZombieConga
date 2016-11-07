@@ -16,27 +16,31 @@ class GameScene: SKScene {
     
     
     var lastUpdateTime: TimeInterval = 0
+    var lastTouchLocation: CGPoint?
     var dt: TimeInterval = 0
     
     let zombieMovePointsPerSec: CGFloat = 480.0
     var velocity = CGPoint.zero
     
-    let zombie = SKSpriteNode(imageNamed: "zombie1")
+    let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
+    
+    let zombie = SKSpriteNode(imageNamed: "酒心糖果")
     
     let playableRect: CGRect
     
     override func didMove(to view: SKView) {
         
         backgroundColor = SKColor.black
-        let background = SKSpriteNode(imageNamed: "background1")
+        let background = SKSpriteNode(imageNamed: "iPhone 6")
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
         background.zPosition = -1
         addChild(background)
         
         zombie.position = CGPoint(x: 400, y: 400)
+        zombie.size = CGSize(width: 66.3 * 2, height: 39.4 * 2)
         addChild(zombie)
         
-        debugDrawPlayableAera()
+//        debugDrawPlayableAera()
     }
     
     override init(size: CGSize) {
@@ -71,9 +75,17 @@ class GameScene: SKScene {
         }
         lastUpdateTime = currentTime
         
-        move(sprite: zombie, velocity: velocity)
-        boundsCheckZombie()
-        rotation(sprite: zombie, direction: velocity)
+        if let lastTouchLocation = lastTouchLocation {
+            let diff = lastTouchLocation - zombie.position
+            if diff.length() <= zombieMovePointsPerSec * CGFloat(dt) {
+                zombie.position = lastTouchLocation
+                velocity = CGPoint.zero
+            } else {
+                move(sprite: zombie, velocity: velocity)
+//                rotate(sprite: zombie, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
+            }
+        }
+
     }
     
     func move(sprite: SKSpriteNode, velocity: CGPoint) {
@@ -83,13 +95,14 @@ class GameScene: SKScene {
     
     func moveZombieToward(location: CGPoint) {
         let offset = location - zombie.position //CGPoint(x: location.x - zombie.position.x, y: location.y - zombie.position.y)
-        let length = sqrt(Double(offset.x * offset.x + offset.y * offset.y))
-        let direction = CGPoint(x: offset.x / CGFloat(length), y: offset.y / CGFloat(length))
+//        let length = sqrt(Double(offset.x * offset.x + offset.y * offset.y))
+//        let direction = CGPoint(x: offset.x / CGFloat(length), y: offset.y / CGFloat(length))
         velocity = offset.normalized() * zombieMovePointsPerSec //CGPoint(x: direction.x * zombieMovePointsPerSec, y: direction.y * zombieMovePointsPerSec)
     }
     
     func sceneTouched(touchLocation: CGPoint) {
         moveZombieToward(location: touchLocation)
+        lastTouchLocation = touchLocation
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -129,9 +142,17 @@ class GameScene: SKScene {
         }
     }
     
-    func rotation(sprite: SKSpriteNode, direction: CGPoint) {
-        sprite.zRotation = direction.angle //CGFloat(atan2(Double(direction.y), Double(direction.x)))
-        
+    func rotate(sprite: SKSpriteNode, direction: CGPoint, rotateRadiansPerSec: CGFloat) {
+        let shortest = shortestAngleBetween(angle1: sprite.zRotation, angle2: velocity.angle)
+        let amountToRotate = min(rotateRadiansPerSec * CGFloat(dt), abs(shortest))
+        sprite.zRotation += shortest.sign() * amountToRotate
     }
     
+    func tubaozi() {
+        print("tubaozi")
+    }
+    
+    func fenshen() {
+        print("fenshen")
+    }
 }
